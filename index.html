@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Psychology Hacks - Victory Hour Multimedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#FFD700'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .gradient-gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+        
+        .animate-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .animate-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .favorite-star {
+            transition: all 0.3s ease;
+        }
+        
+        .favorite-star.active {
+            color: #1f2937;
+            background-color: #fbbf24;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-4xl w-full">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                    Daily Psychology
+                    <span class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Hacks</span>
+                </h1>
+                <p class="text-gray-300 text-lg">Science-backed tips to optimize your daily life</p>
+            </div>
+
+            <!-- Main Card -->
+            <div class="relative">
+                <div id="mainCard" class="p-1 rounded-3xl shadow-2xl transform transition-all duration-300">
+                    <div class="glassmorphism rounded-3xl p-8 md:p-12 text-white">
+                        <!-- Card Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div id="hackIcon" class="p-3 bg-white/20 rounded-2xl">
+                                    <!-- Icon will be inserted here -->
+                                </div>
+                                <div>
+                                    <span id="hackCategory" class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
+                                        <!-- Category will be inserted here -->
+                                    </span>
+                                    <div id="hackNumber" class="text-sm text-white/70 mt-1">
+                                        <!-- Hack number will be inserted here -->
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="favoriteBtn" class="p-3 rounded-full transition-all duration-300 favorite-star bg-white/20 text-white hover:bg-white/30">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="space-y-6">
+                            <h2 id="hackTitle" class="text-3xl md:text-4xl font-bold leading-tight">
+                                <!-- Title will be inserted here -->
+                            </h2>
+                            <p id="hackDescription" class="text-xl md:text-2xl text-white/90 leading-relaxed">
+                                <!-- Description will be inserted here -->
+                            </p>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="flex items-center justify-between mt-8">
+                            <button id="prevBtn" class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-6 py-3 rounded-full transition-all duration-300 animate-scale">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                                <span>Previous</span>
+                            </button>
+
+                            <!-- Progress Dots -->
+                            <div id="progressDots" class="flex space-x-2">
+                                <!-- Dots will be inserted here -->
+                            </div>
+
+                            <button id="nextBtn" class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-6 py-3 rounded-full transition-all duration-300 animate-scale">
+                                <span>Next</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="mt-8 glassmorphism rounded-2xl p-6">
+                <h3 class="text-white font-semibold mb-4">Quick Jump</h3>
+                <div id="quickNav" class="grid grid-cols-5 md:grid-cols-10 gap-2">
+                    <!-- Quick navigation buttons will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Footer Stats -->
+            <div class="mt-8 text-center text-white/70">
+                <p id="stats" class="text-sm">
+                    <!-- Stats will be inserted here -->
+                </p>
+            </div>
+
+            <!-- Company Branding -->
+            <div class="mt-12 bg-gradient-to-r from-white/5 to-white/10 glassmorphism rounded-2xl p-6 border border-white/20">
+                <div class="text-center space-y-3">
+                    <h4 class="text-white font-bold text-lg">Built by Victory Hour Multimedia Inc.</h4>
+                    <p class="text-white/80 font-medium italic">We build brands that lead.</p>
+                    <p class="text-white/70 text-sm">From strategy to design to digital presence—your growth is our mission.</p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
+                        <a href="https://www.victoryhourmedia.com" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-all duration-300 animate-scale text-white text-sm font-medium">
+                            <span>🌐</span>
+                            <span>www.victoryhourmedia.com</span>
+                        </a>
+                        <a href="mailto:info@victoryhourmedia.com"
+                           class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-all duration-300 animate-scale text-white text-sm font-medium">
+                            <span>✉️</span>
+                            <span>info@victoryhourmedia.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const hacks = [
+            {
+                id: 1,
+                title: "The 2 Minute Rule",
+                description: "If a task takes less than 2 minutes, do it immediately. Prevents procrastination.",
+                icon: "⏰",
+                category: "Productivity",
+                color: "from-blue-500 to-cyan-500"
+            },
+            {
+                id: 2,
+                title: "Dress for Success",
+                description: "Wearing slightly more formal clothes boosts confidence and authority (enclothed cognition).",
+                icon: "👔",
+                category: "Confidence",
+                color: "from-purple-500 to-pink-500"
+            },
+            {
+                id: 3,
+                title: "Chunk Big Tasks",
+                description: "Break projects into smaller steps. The brain loves progress.",
+                icon: "🎯",
+                category: "Productivity",
+                color: "from-green-500 to-teal-500"
+            },
+            {
+                id: 4,
+                title: "The Zeigarnik Effect",
+                description: "Start a task, even briefly, your brain will nag you to finish it.",
+                icon: "🧠",
+                category: "Psychology",
+                color: "from-orange-500 to-red-500"
+            },
+            {
+                id: 5,
+                title: "Smile More",
+                description: "Smiling tricks your brain into feeling happier (facial feedback loop).",
+                icon: "😊",
+                category: "Mood",
+                color: "from-yellow-500 to-orange-500"
+            },
+            {
+                id: 6,
+                title: "Use Names Often",
+                description: "People feel more valued when you say their name in conversation.",
+                icon: "👥",
+                category: "Social",
+                color: "from-indigo-500 to-purple-500"
+            },
+            {
+                id: 7,
+                title: "Sit Up Straight",
+                description: "Good posture improves mood, energy, and confidence.",
+                icon: "🏃",
+                category: "Confidence",
+                color: "from-teal-500 to-blue-500"
+            },
+            {
+                id: 8,
+                title: "Anchor Your Day",
+                description: "A strong morning routine reduces decision fatigue later.",
+                icon: "🏠",
+                category: "Routine",
+                color: "from-pink-500 to-rose-500"
+            },
+            {
+                id: 9,
+                title: "Leverage Loss Aversion",
+                description: "Frame goals as 'not losing progress' instead of 'gaining more.' It motivates better.",
+                icon: "🧠",
+                category: "Motivation",
+                color: "from-cyan-500 to-blue-500"
+            },
+            {
+                id: 10,
+                title: "Silence Notifications",
+                description: "Multitasking kills focus. Block distractions for deep work.",
+                icon: "🎯",
+                category: "Focus",
+                color: "from-gray-600 to-gray-800"
+            },
+            {
+                id: 11,
+                title: "Reward Yourself",
+                description: "Pair dull tasks with small rewards (coffee, music) to boost motivation.",
+                icon: "☕",
+                category: "Motivation",
+                color: "from-amber-500 to-orange-600"
+            },
+            {
+                id: 12,
+                title: "Declutter Your Space",
+                description: "Clean environments reduce stress and improve focus.",
+                icon: "🏠",
+                category: "Environment",
+                color: "from-emerald-500 to-green-600"
+            },
+            {
+                id: 13,
+                title: "Mirror People Subtly",
+                description: "Copying gestures builds instant rapport (but don't overdo it).",
+                icon: "👥",
+                category: "Social",
+                color: "from-violet-500 to-purple-600"
+            },
+            {
+                id: 14,
+                title: "Chew Gum",
+                description: "Improves focus and reduces stress during study or work.",
+                icon: "🧠",
+                category: "Focus",
+                color: "from-lime-500 to-green-500"
+            },
+            {
+                id: 15,
+                title: "Morning Sunlight",
+                description: "Exposure to natural light resets your circadian rhythm and boosts mood.",
+                icon: "☀️",
+                category: "Health",
+                color: "from-yellow-400 to-orange-500"
+            },
+            {
+                id: 16,
+                title: "Use Scarcity",
+                description: "Limit availability of your time or offers. People value what's rare.",
+                icon: "⏰",
+                category: "Psychology",
+                color: "from-red-500 to-pink-500"
+            },
+            {
+                id: 17,
+                title: "Pause Before Replying",
+                description: "A short silence makes you seem more thoughtful and confident.",
+                icon: "👥",
+                category: "Communication",
+                color: "from-slate-500 to-gray-600"
+            },
+            {
+                id: 18,
+                title: "Stand, Don't Sit",
+                description: "Standing meetings are quicker and more productive.",
+                icon: "🎯",
+                category: "Productivity",
+                color: "from-blue-600 to-indigo-600"
+            },
+            {
+                id: 19,
+                title: "Default to Gratitude",
+                description: "Writing 3 things you're grateful for daily improves long-term happiness.",
+                icon: "😊",
+                category: "Wellbeing",
+                color: "from-rose-400 to-pink-500"
+            },
+            {
+                id: 20,
+                title: "End on a High Note",
+                description: "People remember the last moments most (peak-end rule). Finish conversations and tasks positively.",
+                icon: "⭐",
+                category: "Psychology",
+                color: "gradient-gold"
+            }
+        ];
+
+        // State
+        let currentHack = 0;
+        let favorites = new Set();
+        let isAnimating = false;
+
+        // DOM Elements
+        const mainCard = document.getElementById('mainCard');
+        const hackIcon = document.getElementById('hackIcon');
+        const hackCategory = document.getElementById('hackCategory');
+        const hackNumber = document.getElementById('hackNumber');
+        const hackTitle = document.getElementById('hackTitle');
+        const hackDescription = document.getElementById('hackDescription');
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressDots = document.getElementById('progressDots');
+        const quickNav = document.getElementById('quickNav');
+        const stats = document.getElementById('stats');
+
+        // Functions
+        function updateCard() {
+            const hack = hacks[currentHack];
+            
+            // Update card gradient
+            mainCard.className = `bg-gradient-to-br ${hack.color} p-1 rounded-3xl shadow-2xl transform transition-all duration-300`;
+            
+            // Update content
+            hackIcon.innerHTML = `<span class="text-2xl">${hack.icon}</span>`;
+            hackCategory.textContent = hack.category;
+            hackNumber.textContent = `Hack #${hack.id} of 20`;
+            hackTitle.textContent = hack.title;
+            hackDescription.textContent = hack.description;
+            
+            // Update favorite button
+            if (favorites.has(hack.id)) {
+                favoriteBtn.classList.add('active');
+                favoriteBtn.querySelector('svg').setAttribute('fill', 'currentColor');
+            } else {
+                favoriteBtn.classList.remove('active');
+                favoriteBtn.querySelector('svg').setAttribute('fill', 'none');
+            }
+            
+            updateProgressDots();
+            updateQuickNav();
+            updateStats();
+        }
+
+        function updateProgressDots() {
+            progressDots.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const dot = document.createElement('div');
+                const dotIndex = currentHack < 5 ? i : 
+                               currentHack >= hacks.length - 5 ? i + hacks.length - 5 :
+                               i + currentHack - 2;
+                
+                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${
+                    dotIndex === currentHack ? 'bg-white scale-125' : 'bg-white/40'
+                }`;
+                progressDots.appendChild(dot);
+            }
+        }
+
+        function updateQuickNav() {
+            quickNav.innerHTML = '';
+            hacks.forEach((hack, index) => {
+                const btn = document.createElement('button');
+                btn.textContent = hack.id;
+                btn.className = `p-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    index === currentHack
+                        ? 'bg-white text-gray-900'
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                } ${favorites.has(hack.id) ? 'ring-2 ring-yellow-400' : ''}`;
+                
+                btn.addEventListener('click', () => {
+                    if (!isAnimating) {
+                        animateToHack(index);
+                    }
+                });
+                
+                quickNav.appendChild(btn);
+            });
+        }
+
+        function updateStats() {
+            const progress = Math.round(((currentHack + 1) / 20) * 100);
+            stats.textContent = `Favorites: ${favorites.size} | Progress: ${currentHack + 1}/20 (${progress}%)`;
+        }
+
+        function animateToHack(index) {
+            isAnimating = true;
+            mainCard.style.transform = 'scale(0.95)';
+            mainCard.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                currentHack = index;
+                updateCard();
+                mainCard.style.transform = 'scale(1)';
+                mainCard.style.opacity = '1';
+                isAnimating = false;
+            }, 150);
+        }
+
+        function nextHack() {
+            if (!isAnimating) {
+                const nextIndex = (currentHack + 1) % hacks.length;
+                animateToHack(nextIndex);
+            }
+        }
+
+        function prevHack() {
+            if (!isAnimating) {
+                const prevIndex = (currentHack - 1 + hacks.length) % hacks.length;
+                animateToHack(prevIndex);
+            }
+        }
+
+        function toggleFavorite() {
+            const hackId = hacks[currentHack].id;
+            if (favorites.has(hackId)) {
+                favorites.delete(hackId);
+            } else {
+                favorites.add(hackId);
+            }
+            updateCard();
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', prevHack);
+        nextBtn.addEventListener('click', nextHack);
+        favoriteBtn.addEventListener('click', toggleFavorite);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevHack();
+            if (e.key === 'ArrowRight') nextHack();
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleFavorite();
+            }
+        });
+
+        // Initialize
+        updateCard();
+    </script>
+</body>
+</html>
